@@ -256,6 +256,28 @@ upstream, not a test to relax in your theme.
    in the model — open an issue rather than reaching around it.
 5. **Availability is a boolean.** Exact stock counts stay private.
 
+## Text and translations
+
+Theme files render their words through the translator, never as literal text.
+Templates and controls can't read request context, so the translator arrives
+as an optional `i18n` prop (Layout and the routes pass it):
+
+```astro
+---
+import { storefrontI18n, type I18n } from '../../features/storefront/controls/i18n';
+interface Props { /* …your props… */ i18n?: I18n }
+const i18n = storefrontI18n(Astro.props.i18n); // English when rendered without one
+const { t } = i18n;
+---
+<button>{t('storefront.product.addToCart')}</button>
+<CatalogSort model={model.sort} i18n={i18n} />  <!-- hand it to the controls you compose -->
+```
+
+The store language is `locale` in `src/store.config.ts`. To reword something
+for your store only, change the message in
+`src/i18n/messages/<locale>/storefront.ts`; new strings your theme needs go in
+the same file. See `src/i18n/README.md`.
+
 ## Styling
 
 Tokens live in your theme's `tokens.css` (`src/themes/<your-theme>/tokens.css`),

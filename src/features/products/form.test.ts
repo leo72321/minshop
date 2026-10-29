@@ -47,14 +47,14 @@ describe('parseProductForm', () => {
     expect('error' in parseProductForm(form({ name: 'X', price: '-5', stock: '1' }))).toBe(true);
   });
 
-  it('requires a price while allowing an explicit zero', () => {
-    for (const price of [undefined, '', '   ']) {
+  it('requires a price, preserving explicit free products in each language', () => {
+    for (const value of [undefined, '', '   ']) {
       const fields = form({ name: 'X', stock: '1' });
-      if (price !== undefined) fields.set('price', price);
+      if (value !== undefined) fields.set('price', value);
       expect(parseProductForm(fields)).toEqual({ error: 'Price is required.' });
     }
-    const result = parseProductForm(form({ name: 'X', price: '0', stock: '1' }));
-    expect(result).toMatchObject({ data: { price_cents: 0 } });
+    const free = parseProductForm(form({ name: 'X', price: '0', stock: '1' }));
+    expect(free).toMatchObject({ data: { price_cents: 0 } });
   });
 
   it('rejects non-integer stock', () => {

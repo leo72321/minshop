@@ -12,6 +12,9 @@ import type { DeepPartial, SiteConfig } from './config';
 export const storeOverrides: DeepPartial<SiteConfig> = {
   // currency: 'usd',                // ISO 4217, lowercase
   //
+  // locale: 'zh-TW',                 // storefront + email: 'en' | 'pl' | 'it' | 'zh-TW'
+  // adminLocale: 'zh-TW',            // admin default (each browser can switch)
+  //
   // features: { accounts: false },  // magic-link customer login
   //
   // images: { maxWidth: 1000 },      // optimization on/off lives in Admin

@@ -27,6 +27,7 @@ import {
 import { addCacheTags, responseCacheTags } from './features/cache/tags';
 import { normalizeSearchQuery } from './features/search/query';
 import { isForbiddenFormOrigin } from './features/auth/formOrigin';
+import { requestI18n } from './i18n';
 
 /**
  * Admin auth gate. Protects BOTH the admin UI (`/admin/*`) and the admin API
@@ -139,7 +140,7 @@ async function gate(context: APIContext, next: MiddlewareNext): Promise<Response
     try {
       if (!(await checkRateLimit(limiter, context.request, path))) {
         console.warn(JSON.stringify({ event: 'rate_limited', bucket, path }));
-        return rateLimitedResponse(path);
+        return rateLimitedResponse(path, context.locals.i18n);
       }
     } catch (error) {
       // A limiter outage must not make checkout or login unavailable. Binding
@@ -173,7 +174,7 @@ async function gate(context: APIContext, next: MiddlewareNext): Promise<Response
     if (await verifySession(session, signingKey, cred.tagSource, Date.now() / 1000)) return next();
     // Not authenticated: humans go to the login form, API callers get 401.
     if (path.startsWith('/api/')) {
-      return new Response('Authentication required.', { status: 401 });
+      return new Response(context.locals.i18n.t('admin.gate.authRequired'), { status: 401 });
     }
     return context.redirect('/admin/login', 303);
   }
@@ -188,6 +189,7 @@ async function gate(context: APIContext, next: MiddlewareNext): Promise<Response
     context.request.headers.get('Cf-Access-Jwt-Assertion'),
     env.CF_ACCESS_TEAM_DOMAIN,
     env.CF_ACCESS_AUD,
+    context.locals.i18n,
   );
   if (access.action === 'deny') {
     return new Response(access.message, { status: 403 });
@@ -206,7 +208,7 @@ async function gate(context: APIContext, next: MiddlewareNext): Promise<Response
       context.locals.adminEmail = identity.email;
       return next();
     }
-    return new Response('Invalid Access token.', { status: 403 });
+    return new Response(context.locals.i18n.t('admin.access.invalidToken'), { status: 403 });
   }
 
   // 4. Bootstrap (first run): no admin password and no Access configuration. The
@@ -216,13 +218,16 @@ async function gate(context: APIContext, next: MiddlewareNext): Promise<Response
   //    Cloudflare Access, to close this window. See README → Admin auth.)
   if (path === '/admin/setup') return next();
   if (path.startsWith('/api/')) {
-    return new Response('Admin not set up yet — complete /admin/setup first.', { status: 401 });
+    return new Response(context.locals.i18n.t('admin.gate.notSetUp'), { status: 401 });
   }
   return context.redirect('/admin/setup', 303);
 }
 
 async function route(context: APIContext, next: MiddlewareNext): Promise<Response> {
   const path = context.url.pathname;
+  // Every route renders through a translator: the admin language on admin paths,
+  // the store language everywhere else (see src/i18n/index.ts).
+  context.locals.i18n = requestI18n(path, context.cookies);
   const productError = path.startsWith('/products/') && context.url.searchParams.has('error');
 
   let response = isForbiddenFormOrigin(context.request, context.url)
