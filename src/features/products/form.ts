@@ -31,7 +31,9 @@ export function parseProductForm(
   const name = String(form.get('name') ?? '').trim();
   if (!name) return { error: i18n.t('adminProducts.validation.nameRequired') };
 
-  const price = Number(String(form.get('price') ?? '').trim());
+  const priceInput = String(form.get('price') ?? '').trim();
+  if (!priceInput) return { error: i18n.t('adminProducts.validation.priceRequired') };
+  const price = Number(priceInput);
   if (!Number.isFinite(price) || price < 0) {
     return { error: i18n.t('adminProducts.validation.priceInvalid') };
   }

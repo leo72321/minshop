@@ -78,6 +78,7 @@ export const adminProducts = {
   'adminProducts.form.cancel': 'Anuluj',
 
   // Product form validation (src/features/products/form.ts).
+  'adminProducts.validation.priceRequired': 'Podaj cenę.',
   'adminProducts.validation.nameRequired': 'Nazwa jest wymagana.',
   'adminProducts.validation.priceInvalid': 'Cena musi być liczbą nieujemną.',
   'adminProducts.validation.stockInvalid': 'Stan magazynowy musi być nieujemną liczbą całkowitą.',

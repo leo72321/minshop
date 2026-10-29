@@ -10,8 +10,8 @@ Build-time, in `src/store.config.ts`:
 
 ```ts
 export const storeOverrides: DeepPartial<SiteConfig> = {
-  locale: 'pl',       // storefront, storefront APIs, emails, and price/date formatting
-  adminLocale: 'en',  // optional: the admin's default (falls back to `locale`)
+  locale: 'zh-TW',        // storefront, storefront APIs, emails, and price/date formatting
+  adminLocale: 'zh-TW',   // optional: the admin's default (falls back to `locale`)
 };
 ```
 
@@ -21,8 +21,8 @@ switch the admin language from the sidebar; the choice is stored in a cookie.
 
 ## Writing translatable code
 
-A new English message needs its `pl` and `it` entries in the same change:
-`npm test` fails on an incomplete bundled translation.
+A new English message needs its `pl`, `it`, and `zh-TW` entries in the same change:
+`npm test` fails on an incomplete bundled translation. Taiwanese translations are in `src/i18n/messages/zh-TW/` and grouped by storefront, checkout, admin, shipping, and other areas.
 
 
 Catalogs live in `src/i18n/messages/<locale>/<area>.ts`. Every key is prefixed by

@@ -21,7 +21,7 @@ export interface SiteConfig {
   /**
    * Language of the storefront, its APIs, and emails, and the locale prices and
    * dates are formatted in: a code from LOCALES in src/i18n/core.ts ('en', 'pl',
-   * 'it'). Build-time and store-wide like currency, because catalog content is
+   * 'it', 'zh-TW'). Build-time and store-wide like currency, because catalog content is
    * written in one language. Unknown codes fall back to English.
    */
   locale: string;

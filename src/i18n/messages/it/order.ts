@@ -6,7 +6,7 @@ export const order = {
   'order.page.titleConfirming': 'Conferma dell’ordine in corso',
   'order.confirmed.heading': 'Grazie! Il tuo ordine è confermato.',
   'order.confirmed.reference': 'Ordine #{ref}',
-  'order.confirmed.referenceWithReceipt': 'Ordine #{ref} · la ricevuta è in arrivo a {email}',
+  'order.confirmed.referenceWithReceipt': 'Ordine #{ref} · E-mail ordine: {email}',
   'order.confirmed.item': 'Articolo',
   'order.confirmed.qty': 'Qtà',
   'order.confirmed.lineTotal': 'Totale',

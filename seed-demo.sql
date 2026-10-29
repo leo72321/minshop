@@ -1,4 +1,7 @@
 -- seed-demo.sql — 30 demo products across 6 categories (no images — they show the placeholder).
+-- Taiwanese fork: illustrative sample prices are in TWD minor units, with
+-- currency stamped on each INSERT (no existing product is ever rewritten).
+-- Prices are demo estimates, not live USD/TWD FX conversions.
 -- Local dev demo data (separate from seed.sql). Re-runnable: every insert is
 -- guarded so a second run is a no-op. Add product images later in Admin → Products.
 --   wrangler d1 execute minshop-db --local --file=./seed-demo.sql
@@ -12,100 +15,100 @@ INSERT INTO categories (name, slug) SELECT 'Home & Living','home'      WHERE NOT
 INSERT INTO categories (name, slug) SELECT 'Stationery','stationery'   WHERE NOT EXISTS (SELECT 1 FROM categories WHERE slug='stationery');
 
 -- ── Products (no images — Admin → Products can add them) ────────────────────
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Merino Wool Beanie','merino-wool-beanie','A soft, warm merino wool beanie that holds its shape.',3200,60
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Merino Wool Beanie','merino-wool-beanie','A soft, warm merino wool beanie that holds its shape.',96000,60,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='merino-wool-beanie');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Canvas Tote Bag','canvas-tote-bag','Heavyweight cotton canvas tote with reinforced straps.',2400,120
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Canvas Tote Bag','canvas-tote-bag','Heavyweight cotton canvas tote with reinforced straps.',72000,120,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='canvas-tote-bag');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Organic Cotton Tee','organic-cotton-tee','A breathable organic cotton t-shirt with a relaxed fit.',2800,90
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Organic Cotton Tee','organic-cotton-tee','A breathable organic cotton t-shirt with a relaxed fit.',84000,90,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='organic-cotton-tee');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Linen Button-Up Shirt','linen-button-up-shirt','Lightweight linen shirt for warm days.',6800,40
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Linen Button-Up Shirt','linen-button-up-shirt','Lightweight linen shirt for warm days.',204000,40,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='linen-button-up-shirt');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Wool Crew Socks (3-Pack)','wool-crew-socks','Cushioned merino crew socks, three pairs.',2200,150
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Wool Crew Socks (3-Pack)','wool-crew-socks','Cushioned merino crew socks, three pairs.',66000,150,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='wool-crew-socks');
 
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Cast Iron Skillet','cast-iron-skillet','Pre-seasoned 10-inch cast iron skillet.',4500,35
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Cast Iron Skillet','cast-iron-skillet','Pre-seasoned 10-inch cast iron skillet.',135000,35,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='cast-iron-skillet');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Ceramic Pour-Over Coffee Set','pour-over-coffee-set','Ceramic dripper and carafe for pour-over coffee.',5400,25
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Ceramic Pour-Over Coffee Set','pour-over-coffee-set','Ceramic dripper and carafe for pour-over coffee.',162000,25,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='pour-over-coffee-set');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Acacia Wood Cutting Board','acacia-cutting-board','End-grain acacia board that''s kind to knives.',3800,50
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Acacia Wood Cutting Board','acacia-cutting-board','End-grain acacia board that''s kind to knives.',114000,50,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='acacia-cutting-board');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Stainless Steel French Press','stainless-french-press','Double-wall steel French press, keeps coffee hot.',4200,30
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Stainless Steel French Press','stainless-french-press','Double-wall steel French press, keeps coffee hot.',126000,30,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='stainless-french-press');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Matte Black Flatware Set','matte-flatware-set','16-piece matte black stainless flatware set.',7600,20
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Matte Black Flatware Set','matte-flatware-set','16-piece matte black stainless flatware set.',228000,20,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='matte-flatware-set');
 
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Insulated Water Bottle','insulated-water-bottle','Vacuum-insulated bottle: cold 24h, hot 12h.',3400,100
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Insulated Water Bottle','insulated-water-bottle','Vacuum-insulated bottle: cold 24h, hot 12h.',102000,100,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='insulated-water-bottle');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Packable Down Jacket','packable-down-jacket','Ultralight down jacket that packs into its pocket.',12900,28
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Packable Down Jacket','packable-down-jacket','Ultralight down jacket that packs into its pocket.',387000,28,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='packable-down-jacket');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Trail Daypack 20L','trail-daypack','20-liter daypack with a hydration sleeve.',8900,22
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Trail Daypack 20L','trail-daypack','20-liter daypack with a hydration sleeve.',267000,22,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='trail-daypack');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Enamel Camp Mug','enamel-camp-mug','Classic speckled enamel mug for the trail.',1600,200
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Enamel Camp Mug','enamel-camp-mug','Classic speckled enamel mug for the trail.',48000,200,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='enamel-camp-mug');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Merino Hiking Socks','merino-hiking-socks','Cushioned merino hiking socks, blister-resistant.',2600,80
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Merino Hiking Socks','merino-hiking-socks','Cushioned merino hiking socks, blister-resistant.',78000,80,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='merino-hiking-socks');
 
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Wireless Earbuds','wireless-earbuds','True wireless earbuds with a charging case.',9900,45
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Wireless Earbuds','wireless-earbuds','True wireless earbuds with a charging case.',297000,45,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='wireless-earbuds');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Bamboo Wireless Charger','bamboo-wireless-charger','Qi wireless charging pad with a bamboo top.',3900,60
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Bamboo Wireless Charger','bamboo-wireless-charger','Qi wireless charging pad with a bamboo top.',117000,60,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='bamboo-wireless-charger');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Mechanical Keyboard','mechanical-keyboard','Compact 75% mechanical keyboard, hot-swappable.',11900,18
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Mechanical Keyboard','mechanical-keyboard','Compact 75% mechanical keyboard, hot-swappable.',357000,18,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='mechanical-keyboard');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Portable Bluetooth Speaker','bluetooth-speaker','Pocket Bluetooth speaker, water-resistant.',7900,33
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Portable Bluetooth Speaker','bluetooth-speaker','Pocket Bluetooth speaker, water-resistant.',237000,33,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='bluetooth-speaker');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'USB-C Desk Hub','usb-c-desk-hub','7-in-1 USB-C hub for laptops.',4900,40
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'USB-C Desk Hub','usb-c-desk-hub','7-in-1 USB-C hub for laptops.',147000,40,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='usb-c-desk-hub');
 
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Linen Throw Blanket','linen-throw-blanket','Stonewashed linen throw for the sofa.',7200,30
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Linen Throw Blanket','linen-throw-blanket','Stonewashed linen throw for the sofa.',216000,30,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='linen-throw-blanket');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Ceramic Table Lamp','ceramic-table-lamp','Hand-glazed ceramic lamp with a linen shade.',8800,15
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Ceramic Table Lamp','ceramic-table-lamp','Hand-glazed ceramic lamp with a linen shade.',264000,15,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='ceramic-table-lamp');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Scented Soy Candle','soy-candle','Hand-poured soy candle, cedar and amber.',2400,110
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Scented Soy Candle','soy-candle','Hand-poured soy candle, cedar and amber.',72000,110,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='soy-candle');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Woven Seagrass Basket','seagrass-basket','Handwoven seagrass storage basket.',4400,25
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Woven Seagrass Basket','seagrass-basket','Handwoven seagrass storage basket.',132000,25,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='seagrass-basket');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Stoneware Plant Pot','stoneware-plant-pot','Matte stoneware planter with drainage.',2900,70
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Stoneware Plant Pot','stoneware-plant-pot','Matte stoneware planter with drainage.',87000,70,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='stoneware-plant-pot');
 
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Leather Bound Notebook','leather-notebook','Full-grain leather notebook, refillable.',2800,90
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Leather Bound Notebook','leather-notebook','Full-grain leather notebook, refillable.',84000,90,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='leather-notebook');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Brass Fountain Pen','brass-fountain-pen','Solid brass fountain pen with a fine nib.',5800,35
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Brass Fountain Pen','brass-fountain-pen','Solid brass fountain pen with a fine nib.',174000,35,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='brass-fountain-pen');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Recycled Sticky Notes Set','sticky-notes-set','Recycled paper sticky notes, six pads.',1200,200
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Recycled Sticky Notes Set','sticky-notes-set','Recycled paper sticky notes, six pads.',36000,200,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='sticky-notes-set');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Walnut Desk Organizer','walnut-desk-organizer','Walnut organizer for pens and clips.',5200,24
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Walnut Desk Organizer','walnut-desk-organizer','Walnut organizer for pens and clips.',156000,24,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='walnut-desk-organizer');
-INSERT INTO products (name, slug, description, price_cents, stock)
-SELECT 'Linen Hardcover Journal','linen-hardcover-journal','Linen-wrapped hardcover journal, dotted pages.',3400,65
+INSERT INTO products (name, slug, description, price_cents, stock, currency)
+SELECT 'Linen Hardcover Journal','linen-hardcover-journal','Linen-wrapped hardcover journal, dotted pages.',102000,65,'twd'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE slug='linen-hardcover-journal');
 
 -- ── Product ↔ category links ─────────────────────────────────────────────────

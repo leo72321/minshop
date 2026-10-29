@@ -75,6 +75,7 @@ export const adminProducts = {
   'adminProducts.form.cancel': 'Cancel',
 
   // Product form validation (src/features/products/form.ts).
+  'adminProducts.validation.priceRequired': 'Price is required.',
   'adminProducts.validation.nameRequired': 'Name is required.',
   'adminProducts.validation.priceInvalid': 'Price must be a non-negative number.',
   'adminProducts.validation.stockInvalid': 'Stock must be a non-negative whole number.',

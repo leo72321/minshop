@@ -1,0 +1,32 @@
+import type { Catalog } from '../../core';
+
+/** Traditional Chinese (Taiwan) — order. */
+export const order = {
+  "order.error.notFound": "找不到資料",
+  "order.page.titleConfirmed": "訂單已確認",
+  "order.page.titleConfirming": "正在確認訂單",
+  "order.confirmed.heading": "感謝訂購！你的訂單已確認。",
+  "order.confirmed.reference": "訂單編號 #{ref}",
+  "order.confirmed.referenceWithReceipt": "訂單編號 #{ref} · 訂購 Email：{email}",
+  "order.confirmed.item": "商品",
+  "order.confirmed.qty": "數量",
+  "order.confirmed.lineTotal": "小計",
+  "order.confirmed.total": "總計：{amount}",
+  "order.confirmed.paidWith": "付款方式：{method}",
+  "order.confirmed.refundedFull": "已退款 {amount}。",
+  "order.confirmed.refundedPartial": "已退款 {amount}，剩餘已付金額 {remaining}。",
+  "order.confirmed.continueShopping": "繼續購物",
+  "order.payment.card": "信用卡",
+  "order.payment.demo": "測試付款（不會扣款）",
+  "order.downloads.heading": "下載檔案",
+  "order.downloads.sizeKb": "{size} KB",
+  "order.downloads.unavailableAfterRefund": "退款後無法下載",
+  "order.downloads.download": "下載",
+  "order.confirming.heading": "正在確認訂單…",
+  "order.confirming.body": "已收到付款，正在建立訂單。此頁面會自動重新整理，通常只需幾秒鐘。",
+  "order.download.notFound": "找不到檔案",
+  "order.download.unsettled": "尚未完成付款。",
+  "order.download.refunded": "訂單已全額退款，無法下載。",
+  "order.download.fileUnavailable": "檔案暫時無法取得",
+  "order.carrier.other": "其他",
+} satisfies Catalog;

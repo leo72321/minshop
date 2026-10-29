@@ -72,6 +72,7 @@ export const adminProducts = {
   'adminProducts.form.active': 'Attivo (visibile nel negozio)',
   'adminProducts.form.cancel': 'Annulla',
 
+  'adminProducts.validation.priceRequired': 'Il prezzo è obbligatorio.',
   'adminProducts.validation.nameRequired': 'Il nome è obbligatorio.',
   'adminProducts.validation.priceInvalid': 'Il prezzo deve essere un numero non negativo.',
   'adminProducts.validation.stockInvalid': 'Le scorte devono essere un numero intero non negativo.',

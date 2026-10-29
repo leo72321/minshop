@@ -18,6 +18,7 @@ const placeholders = (message: Message): string[] => {
 describe('i18n core', () => {
   it('resolves unknown locales to English', () => {
     expect(resolveLocale('pl')).toBe('pl');
+    expect(resolveLocale('zh-TW')).toBe('zh-TW');
     expect(resolveLocale('xx')).toBe('en');
     expect(resolveLocale(undefined)).toBe('en');
     expect(isLocale('toString')).toBe(false);
@@ -28,6 +29,15 @@ describe('i18n core', () => {
     expect(createI18n('en').money(1000, 'jpy')).toBe('¥1,000');
     expect(createI18n('pl').money(14900, 'pln')).toBe('149,00 zł');
     expect(createI18n('it').money(14900, 'eur')).toBe('149,00 €');
+    expect(createI18n('zh-TW').money(199900, 'twd')).toContain('1,999');
+  });
+
+  it('renders Taiwanese storefront and admin copy', () => {
+    const zh = createI18n('zh-TW');
+    expect(zh.t('storefront.product.addToCart')).toBe('加入購物車');
+    expect(zh.t('admin.nav.orders')).toBe('訂單管理');
+    expect(zh.t('checkout.page.summary', { subtotal: 'NT$150', count: 2 })).toBe('商品小計 NT$150 · 共 2 件');
+    expect(zh.th('adminContent.pages.empty', { href: '/admin/navigation' })).toContain('href="/admin/navigation"');
   });
 
   it('fills placeholders and leaves unknown ones visible', () => {

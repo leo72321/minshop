@@ -16,6 +16,7 @@ import { createTranslator, type Message, type Translator } from './format.ts';
 import { en } from './messages/en/index.ts';
 import { pl } from './messages/pl/index.ts';
 import { it } from './messages/it/index.ts';
+import { zhTW } from './messages/zh-TW/index.ts';
 
 export { escapeHtml, formatMessage } from './format.ts';
 export type { Message, Params, PluralMessage } from './format.ts';
@@ -39,6 +40,7 @@ export const LOCALES = {
   en: { label: 'English', intl: 'en-US', messages: en },
   pl: { label: 'Polski', intl: 'pl-PL', messages: pl },
   it: { label: 'Italiano', intl: 'it-IT', messages: it },
+  'zh-TW': { label: '繁體中文', intl: 'zh-TW', messages: zhTW },
 } satisfies Record<string, LocaleInfo>;
 
 export type Locale = keyof typeof LOCALES;

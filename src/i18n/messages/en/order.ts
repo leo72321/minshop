@@ -7,7 +7,7 @@ export const order = {
   'order.page.titleConfirming': 'Confirming your order',
   'order.confirmed.heading': 'Thank you! Your order is confirmed.',
   'order.confirmed.reference': 'Order #{ref}',
-  'order.confirmed.referenceWithReceipt': 'Order #{ref} · a receipt is on its way to {email}',
+  'order.confirmed.referenceWithReceipt': 'Order #{ref} · Order email: {email}',
   'order.confirmed.item': 'Item',
   'order.confirmed.qty': 'Qty',
   'order.confirmed.lineTotal': 'Total',
